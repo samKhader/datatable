@@ -4,11 +4,16 @@
 <?php
 
 if (isset($_POST['submit'])) {
-create();
+	create();
 }
 if (isset($_POST['delete'])) {
 	delete();
 }
+
+if (isset($_POST['save'])) {
+	update();
+}
+
 
 
 ?>
@@ -126,7 +131,8 @@ if (isset($_POST['delete'])) {
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form method="post" action="index.php" id="saveform">
+					<input type="hidden" name="id">
 					<div class="modal-header">						
 						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -134,24 +140,24 @@ if (isset($_POST['delete'])) {
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="name" required>
 						</div>
 						<div class="form-group">
 							<label>Email</label>
-							<input type="email" class="form-control" required>
+							<input type="email" class="form-control" name="email" required>
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<textarea class="form-control" name="address" required></textarea>
 						</div>
 						<div class="form-group">
 							<label>Phone</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="phone" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
+						<input type="submit" class="btn btn-info" id="savebtn" name="save"  value="Save">
 					</div>
 				</form>
 			</div>
@@ -173,7 +179,7 @@ if (isset($_POST['delete'])) {
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" name="delete" name="delete" value="Delete">
+						<input type="submit" class="btn btn-danger" name="delete" value="Delete">
 					</div>
 				</form>
 			</div>
@@ -189,6 +195,12 @@ if (isset($_POST['delete'])) {
 		$('#deleteform')[0].reset();
 		$('[name="id"]').val($(this).attr('data-id'))
 	})
+
+	$(".edit").click(function(){
+		$('#saveform')[0].reset();
+		$('[name="id"]').val($(this).attr('data-id'))
+	});
+
 </script>
 </body>
 </html>                                		                            

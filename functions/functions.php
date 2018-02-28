@@ -28,7 +28,7 @@ function show()
 			<td>$address</td>
             <td>$phone</td>
             <td>
-                <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>
+                <a href='#editEmployeeModal' class='edit'  data-toggle='modal' data-id='$id'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>
                 <a href='#deleteEmployeeModal' class='delete' data-toggle='modal' data-id='$id'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>
             </td>
         </tr>";
@@ -52,7 +52,6 @@ function create()
 
 }
 
-
 function delete(){
 
 	global $connection;
@@ -64,7 +63,24 @@ function delete(){
 }
 
 
+function update()
+{
+	global $connection;
+	$id = $_POST['id'];
+	$name =  $_POST['name'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$phone =  $_POST['phone'];
 
+	$query = "UPDATE employees SET ";
+	$query .= "name = '$name' , ";
+	$query .= "email = '$email' , ";
+	$query .= "address = '$address' , ";
+	$query .= "phone = '$phone' ";
+	$query .= "WHERE id = $id ";
+	mysqli_query($connection, $query);
+
+}
 
 
 
