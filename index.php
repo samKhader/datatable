@@ -192,12 +192,9 @@ if (isset($_POST['save'])) {
 
 <script type="text/javascript">
 	$('body').on('click','.delete', function(){
-		$('#deleteform')[0].reset();
 		$('[name="id"]').val($(this).attr('data-id'))
 	})
-
 	$(".edit").click(function(){
-		$('#saveform')[0].reset();
 		$('[name="id"]').val($(this).attr('data-id'))
 	});
 
