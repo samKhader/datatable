@@ -10,6 +10,7 @@ function show()
 	//connect query with database
 	$result = mysqli_query($connection,$query);
 	while ($row = mysqli_fetch_assoc($result)) {
+		$id = $row['id'];
 		$name = $row['name'];
 		$email = $row['email'];
 		$address = $row['address'];
@@ -21,6 +22,7 @@ function show()
 					<label for='checkbox1'></label>
 				</span>
 			</td>
+			<td>$id</td>
             <td>$name</td>
             <td>$email</td>
 			<td>$address</td>
@@ -44,12 +46,25 @@ function create()
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$phone =  $_POST['phone'];
-
 	
 	$query = $query = "INSERT INTO employees(name, email, address, phone) VALUES ('$name', '$email', '$address', '$phone')";
 	$result = mysqli_query($connection, $query);
 
 }
+
+
+function delete(){
+	
+	global $connection;
+	$id = $_POST['id'];
+	$query = "DELETE FROM employees ";
+	$query .= "WHERE id = $id ";
+	mysqli_query($connection,$query);
+
+}
+
+
+
 
 
 

@@ -6,6 +6,11 @@
 if (isset($_POST['submit'])) {
 create();
 }
+if (isset($_POST['delete'])) {
+	delete();
+	echo "it works";
+}
+
 
 ?>
 
@@ -32,6 +37,9 @@ create();
 </script>
 </head>
 <body>
+
+
+
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -54,6 +62,7 @@ create();
 								<label for="selectAll"></label>
 							</span>
 						</th>
+						<th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
 						<th>Address</th>
@@ -153,7 +162,7 @@ create();
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form method="post" action="index.php">
 					<div class="modal-header">						
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -164,7 +173,7 @@ create();
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
+						<input type="submit" class="btn btn-danger" name="delete" name="delete" value="Delete">
 					</div>
 				</form>
 			</div>
