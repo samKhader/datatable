@@ -29,7 +29,7 @@ function show()
             <td>$phone</td>
             <td>
                 <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>
-                <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>
+                <a href='#deleteEmployeeModal' class='delete' data-toggle='modal' data-id='$id'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>
             </td>
         </tr>";
 
@@ -54,7 +54,7 @@ function create()
 
 
 function delete(){
-	
+
 	global $connection;
 	$id = $_POST['id'];
 	$query = "DELETE FROM employees ";

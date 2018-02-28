@@ -8,7 +8,6 @@ create();
 }
 if (isset($_POST['delete'])) {
 	delete();
-	echo "it works";
 }
 
 
@@ -162,7 +161,8 @@ if (isset($_POST['delete'])) {
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form method="post" action="index.php">
+				<form id="deleteform" method="post" action="index.php">
+					<input type="hidden" name="id">
 					<div class="modal-header">						
 						<h4 class="modal-title">Delete Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -183,5 +183,12 @@ if (isset($_POST['delete'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
+
+<script type="text/javascript">
+	$('body').on('click','.delete', function(){
+		$('#deleteform')[0].reset();
+		$('[name="id"]').val($(this).attr('data-id'))
+	})
+</script>
 </body>
 </html>                                		                            
